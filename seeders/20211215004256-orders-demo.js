@@ -11,16 +11,16 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    const clientes = await queryInterface.sequelize.query(
-      `SELECT id from clientes;`
+    const customers = await queryInterface.sequelize.query(
+      `SELECT id from Customers;`
     );
 
-    const clientesRows = clientes[0]
+    const customersRows = customers[0]
 
-    await queryInterface.bulkInsert('ordenes', [
-      {fecha: new Date(), clienteId: clientesRows[0].id, createdAt: new Date(), updatedAt: new Date()},
-      {fecha: new Date(), clienteId: clientesRows[1].id, createdAt: new Date(), updatedAt: new Date()},
-      {fecha: new Date(), clienteId: clientesRows[2].id, createdAt: new Date(), updatedAt: new Date()},
+    await queryInterface.bulkInsert('Orders', [
+      {order_date: new Date(), customerID: customersRows[0].id, createdAt: new Date(), updatedAt: new Date()},
+      {order_date: new Date(), customerID: customersRows[1].id, createdAt: new Date(), updatedAt: new Date()},
+      {order_date: new Date(), customerID: customersRows[2].id, createdAt: new Date(), updatedAt: new Date()},
     ], {});
   },
 
@@ -31,6 +31,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('ordenes', null, {});
+    await queryInterface.bulkDelete('Orders', null, {});
   }
 };

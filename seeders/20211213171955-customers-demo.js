@@ -15,7 +15,7 @@ module.exports = {
     for (let i = 0; i <10; i++) {
       await queryInterface.bulkInsert('Customers', [{
         name: 'Customer '+i,
-        lastName: 'Varidex Demo'+i,
+        lastName: 'Last Name'+i,
         bornAt: new Date(),
         state: (i%2),
         createdAt: new Date(),

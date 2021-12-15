@@ -11,7 +11,7 @@ module.exports = {
       order_date: {
         type: Sequelize.DATE
       },
-      clientID: {
+      customerID: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

@@ -12,25 +12,24 @@ module.exports = {
      * }], {});
      */
 
-    const productos = await queryInterface.sequelize.query(
-      `SELECT id from productos;`
+    const products = await queryInterface.sequelize.query(
+      `SELECT id from Products;`
     );
 
-    const productosRows = productos[0];
-
-    const ordenes = await queryInterface.sequelize.query(
-      `SELECT id from ordenes;`
+    const orders = await queryInterface.sequelize.query(
+      `SELECT id from Orders;`
     );
 
-    const ordenesRows = ordenes[0];
+    const productsRows = products[0];
+    const ordersRows = orders[0];
 
-    await queryInterface.bulkInsert('orden_detalles', [
-      {ordenId: ordenesRows[0].id, productoId: productosRows[1].id, createdAt: new Date(), updatedAt: new Date()},
-      {ordenId: ordenesRows[1].id, productoId: productosRows[2].id, createdAt: new Date(), updatedAt: new Date()},
-      {ordenId: ordenesRows[2].id, productoId: productosRows[3].id, createdAt: new Date(), updatedAt: new Date()},
-      {ordenId: ordenesRows[0].id, productoId: productosRows[4].id, createdAt: new Date(), updatedAt: new Date()},
-      {ordenId: ordenesRows[1].id, productoId: productosRows[5].id, createdAt: new Date(), updatedAt: new Date()},
-      {ordenId: ordenesRows[2].id, productoId: productosRows[6].id, createdAt: new Date(), updatedAt: new Date()}
+    await queryInterface.bulkInsert('Orders_details', [
+      {orderID: ordersRows[0].id, productID: productsRows[1].id, createdAt: new Date(), updatedAt: new Date()},
+      {orderID: ordersRows[1].id, productID: productsRows[2].id, createdAt: new Date(), updatedAt: new Date()},
+      {orderID: ordersRows[2].id, productID: productsRows[3].id, createdAt: new Date(), updatedAt: new Date()},
+      {orderID: ordersRows[0].id, productID: productsRows[4].id, createdAt: new Date(), updatedAt: new Date()},
+      {orderID: ordersRows[1].id, productID: productsRows[5].id, createdAt: new Date(), updatedAt: new Date()},
+      {orderID: ordersRows[2].id, productID: productsRows[6].id, createdAt: new Date(), updatedAt: new Date()}
     ], {});
   },
 
@@ -41,6 +40,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('orden_detalles', null, {});
+    await queryInterface.bulkDelete('Orders_details', null, {});
   }
 };
