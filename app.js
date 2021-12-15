@@ -7,14 +7,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 //Pages routes.
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var servicesRouter = require('./routes/services');
-var contactRouter = require('./routes/contact');
 var loginRouter = require('./routes/login');
+var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
 var customersRouter = require('./routes/customers');
 var ordersRouter = require('./routes/orders');
+
+var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -31,13 +30,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Connect routes with views.
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/services', servicesRouter);
-app.use('/contact', contactRouter);
 app.use('/login', loginRouter);
 app.use('/products', productsRouter);
 app.use('/customers', customersRouter);
 app.use('/orders', ordersRouter);
+
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler.
 app.use(function(req, res, next) {
