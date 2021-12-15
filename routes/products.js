@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const Product = require('../models').Product;
+const Product = require('../db/models').Product;
 
 router.get('/', function(req, res, next) {
   Product.findAll({

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const Customer = require('../models').Customer;
+const Customer = require('../db/models').Customer;
 
 router.get('/', function(req, res, next) {
   Customer.findAll({
