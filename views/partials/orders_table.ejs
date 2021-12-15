@@ -16,23 +16,17 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Last Name</th>
-                        <th>Born at</th>
-                        <th>State</th>
-                        <th>Created at</th>
+                        <th>Order date</th>
+                        <th>Customer</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% customers.forEach(function(customer){ %>
+                    <% orders.forEach(function(order){ %>
                         <tr>
-                            <td><%= customer.id %></td>
-                            <td><%= customer.name %></td>
-                            <td><%= customer.lastName %></td>
-                            <td><%= customer.bornAt.toLocaleDateString('en-US') %></td>
-                            <td><%= customer.state %></td>
-                            <td><%= customer.createdAt.toLocaleDateString('en-US') %></td>
+                            <td><%= order.id %></td>
+                            <td><%= order.order_date.toLocaleDateString('en-US') %></td>
+                            <td><%= order.Customer.name +", " +order.Customer.lastName %></td>
                             <td>
                                 <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                                 <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>

@@ -1,14 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
-const Product = require('../models').Product;
+const Order = require('../models').Order;
+const Customer = require('../models').Customer;
 
 router.get('/', function(req, res, next) {
-  Product.findAll({
+  Order.findAll({
+    include: [{ model: Customer }],
     attributes: { exclude: ["updatedAt"] }
   })
-    .then(products => {
-      res.render('products', { title: 'Products', products });
+    .then(orders => {
+      res.render('orders', { title: 'Orders', orders });
     })
     .catch(error => res.status(400).send(error))
 });
