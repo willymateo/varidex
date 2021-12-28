@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
     */
 
-    for (let i = 0; i <10; i++) {
+    for (let i = 1; i <10; i++) {
       await queryInterface.bulkInsert('Customers', [{
         name: 'Customer '+i,
         lastName: 'Last Name'+i,

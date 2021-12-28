@@ -1,4 +1,3 @@
-require('dotenv').config();
 //Npm modules.
 var createError = require('http-errors');
 var express = require('express');
@@ -12,6 +11,7 @@ var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
 var customersRouter = require('./routes/customers');
 var ordersRouter = require('./routes/orders');
+var reportsRouter = require('./routes/reports');
 
 var usersRouter = require('./routes/users');
 
@@ -22,11 +22,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //Middlewares.
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cookieParser());
+app.use(logger('dev'));
 
 //Connect routes with views.
 app.use('/', indexRouter);
@@ -34,6 +34,7 @@ app.use('/login', loginRouter);
 app.use('/products', productsRouter);
 app.use('/customers', customersRouter);
 app.use('/orders', ordersRouter);
+app.use('/reports', reportsRouter);
 
 app.use('/users', usersRouter);
 
