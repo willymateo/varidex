@@ -3,6 +3,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var logger = require('morgan');
 
 //Pages routes.
@@ -25,8 +26,14 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cookieParser());
 app.use(logger('dev'));
+app.use(cookieParser());
+app.use(cookieSession({
+name: 'session',
+keys: ['DAWM'],
+// Cookie Options
+maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
 
 //Connect routes with views.
 app.use('/', indexRouter);

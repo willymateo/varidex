@@ -20,8 +20,12 @@ router.post('/validate', function(req, res, next) {
 
 	//Validación
 	if(user == bd.user && password == bd.password) {
+		res.cookie('user', user, {expire : new Date() + 9999});
+		req.session.user = user;
 		res.redirect('/');
 	} else {
+		res.cookie('user', "", {expire : new Date(0)});
+		req.session = null;
 		res.redirect('/login')
 	}
 
